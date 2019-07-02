@@ -1,4 +1,6 @@
 
-<app-site-list [siteList]="siteListData"></app-site-list>
+<app-site-list
+  (siteSelected)="onNewSiteSelected($event)"
+  [siteList]="siteListData"></app-site-list>
 
-<app-site-preview></app-site-preview>
+<app-site-preview [siteToShow]="newSelectedSite"></app-site-preview>

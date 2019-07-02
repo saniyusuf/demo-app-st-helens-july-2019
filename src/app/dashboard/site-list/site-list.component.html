@@ -1,3 +1,5 @@
 <ul>
-  <li *ngFor="let site of siteList">{{ site.name }}</li>
+  <li
+    (click)="setSelectedSite(site)"
+    *ngFor="let site of siteList">{{ site.name }}</li>
 </ul>

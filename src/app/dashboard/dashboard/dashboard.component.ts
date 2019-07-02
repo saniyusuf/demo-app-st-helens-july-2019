@@ -8,12 +8,16 @@ import {Site} from '../../types/site';
 })
 export class DashboardComponent implements OnInit {
   public siteListData = sitesData;
+  public newSelectedSite: Site;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onNewSiteSelected(newSite: Site) {
+    this.newSelectedSite = newSite;
+  }
 }
 
 const sitesData: Site[] = [
