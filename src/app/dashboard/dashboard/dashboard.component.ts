@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Site } from "../../types/site";
-import { HttpClient } from "@angular/common/http";
+import { SitesDataService } from "../../sites-data.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-dashboard",
@@ -8,13 +9,11 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-  public siteListData;
+  public siteListData: Observable<Site[]>;
   public newSelectedSite: Site;
 
-  constructor(httpClient: HttpClient) {
-    httpClient
-      .get<Site[]>("https://api.myjson.com/bins/4kwpm")
-      .subscribe(dataFromServer => (this.siteListData = dataFromServer));
+  constructor(siteDataService: SitesDataService) {
+    this.siteListData = siteDataService.loadSites();
   }
 
   ngOnInit() {}
